@@ -17,9 +17,9 @@ public class Book {
     private String isbn;
 
     @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    @JoinTable(name = "author_book"/* Olusturulan tablo adı */, joinColumns = @JoinColumn(name = "book_id")/* Bu clasın ıd si book_id seklinde colon olusturuldu */,
+            inverseJoinColumns = @JoinColumn(name = "author_id")/*Eslestirilen classtaki id, author_book tablosunda author_id isminde kolon olusturuldu */)
+    private Set<Author> authors; //Author da mappedBy authors diyerek yukarıdaki author_id'yi gerceklestirmis olduk
 
     public Book() {
     }
