@@ -1,10 +1,9 @@
 package guru.springframework.spring5webapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Publisher {
@@ -14,11 +13,15 @@ public class Publisher {
     private Long id;
 
     private String name;
-
     private String address;
     private String city;
     private String state;
     private String zip;
+
+    @OneToMany(mappedBy = "publisher")  //Bir publisher ımız var ve bu birçok books a sahip
+    //@JoinColumn(name = "publisher_id")  //videoda publisher_id yazdı name i ama ben degistirdim ve buraya mappedBy yazdım
+    private Set<Book> books = new HashSet<>();
+
 
     public Publisher() {
     }
@@ -29,6 +32,14 @@ public class Publisher {
         this.city = city;
         this.state = state;
         this.zip = zip;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public Long getId() {
