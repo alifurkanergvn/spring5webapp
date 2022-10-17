@@ -17,7 +17,8 @@ public class Book {
     private String title;
     private String isbn;
 
-    @ManyToOne
+    @ManyToOne  //Birden çok kitap olabilir ama bir kitabın sadece bir Publisher ı olabilir
+    @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
     @ManyToMany
