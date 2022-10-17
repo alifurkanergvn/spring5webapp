@@ -5,9 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Created by jt on 12/24/19.
- */
 @Controller
 public class BookController {
 
@@ -18,10 +15,13 @@ public class BookController {
     }
 
     @RequestMapping("/books")
-    public String getBooks(Model model){
+    public String getBooks(Model model){  //Spring MVC yapıya sahip controllerimiz var model şeklinde çağırarak
+        // Modelimizi getiriyoruz. Burası view e göndereceğimizdir. View de modeli kopyalayacaktır.
 
-        model.addAttribute("books", bookRepository.findAll());
+        model.addAttribute("books", bookRepository.findAll()); //attribute ismini,attribute değerini yazdık.
+        // Burası bize databaseden Book listesi verip books attribute na ekledi
+        // Bu aşamaya kadar Spring MCV Controller ın temel seviyesini gördük
 
-        return "books/list";
+        return "books/list";  // books dizininin içinde list isimli template'e bak
     }
 }

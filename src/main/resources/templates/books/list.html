@@ -13,6 +13,8 @@
         <th>Title</th>
         <th>Publisher</th>
     </tr>
+    <!-- ${books} şeklinde model den books ların modelini getirttik each iterator unu tanımladık book adoıyla book
+    listesindeki her objenin attribute değerlerini tabloya yazdırmış olduk -->
     <tr th:each="book : ${books}">
         <td th:text="${book.id}">123</td>
         <td th:text="${book.title}"> Spring in Action</td>
